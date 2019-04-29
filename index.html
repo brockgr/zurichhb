@@ -69,6 +69,27 @@
       setTimeout(refresh, 60*1000);
     }
     refresh();
+
+    let dl = -1;
+    let dt = -1;
+    function wobble () {
+      let ml = parseInt(document.styleSheets[0].cssRules[4].style.marginLeft, 10);
+      console.log(ml);
+      ml = ml + dl;
+      if (ml < -42) dl = +1;
+      if (ml > -35) dl = -1;
+      document.styleSheets[0].cssRules[4].style.marginLeft = ml+"px";
+
+      let mt = parseInt(document.styleSheets[0].cssRules[4].style.marginTop, 10);
+      console.log(mt)
+      mt = mt + dt;
+      if (mt < -412) dt = +1;
+      if (mt > -407) dt = -1;
+      document.styleSheets[0].cssRules[4].style.marginTop = mt+"px";
+
+      setTimeout(wobble, 30*1000);
+    }
+    wobble();
   </script>
 
 </html>
